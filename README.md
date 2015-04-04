@@ -1,13 +1,32 @@
 # Ember-bootstrap-colorpicker
 [![Build Status](https://travis-ci.org/zhujy8833/ember-bootstrap-colorpicker.svg?branch=master)](https://travis-ci.org/zhujy8833/ember-bootstrap-colorpicker)
 
-This README outlines the details of collaborating on this Ember addon.
+Simple Bootstrap colorpicker Ember addon component, based on [Bootstrap Colorpicker](http://mjolnic.com/bootstrap-colorpicker/)
 
-## Installation
+## Installation 
+```sh
+npm install --save-dev ember-bootstrap-colorpicker
+ember g ember-bootstrap-colorpicker
+```
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+##Usage
+```javascript
+//templates/components/example.hbs
+{{ember-bootstrap-colorpicker color=model.color}}
+```
+You can bind the color property to your model, so that it will be updated by two-way bindings.
+The ember addon component also accepts other options, you can find detailed documentation: <http://mjolnic.com/bootstrap-colorpicker>
+
+If you want to customize this component by extending it and override the default behaviors, you could do something like 
+```javascript
+//app/components/my-bootstrap-colorpicker.js
+import BootstrapColorpicker from 'ember-bootstrap-colorpicker/components/ember-bootstrap-colorpicker';
+
+export default BootstrapColorpicker.extend({
+	format: 'rgba',
+	horizontal: true
+});
+```
 
 ## Running
 
