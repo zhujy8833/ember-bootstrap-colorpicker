@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+var observer = Ember.observer;
+
 export default Ember.Component.extend({
   color: '#000000',
   format: 'hex',
@@ -12,8 +14,7 @@ export default Ember.Component.extend({
     'horizontal',
     'inline',
     'sliders',
-    'slidersHorz',
-    'template'
+    'slidersHorz'
   ],
 
   didInsertElement: function() {
@@ -30,7 +31,6 @@ export default Ember.Component.extend({
     if(this.get('colorPickerContainer')) {
       opts['container'] = this.get('colorPickerContainer') || false;
     }
-    
     //init
     this.$().attr('data-color', this.get('color'));
     this.$().colorpicker(opts)
@@ -39,9 +39,9 @@ export default Ember.Component.extend({
       });
   },
 
-  updateColor: function() {
+  updateColor: observer('color', function() {
     this.$().colorpicker('setValue', this.get('color'));
-  }.observes('color'),
+  }),
 
   willDestroyElement: function() {
     if(this.$().data('colorpicker')) {

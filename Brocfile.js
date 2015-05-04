@@ -4,6 +4,7 @@
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 var app = new EmberAddon();
+var Funnel = require('broccoli-funnel');
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
@@ -17,5 +18,14 @@ var app = new EmberAddon();
 // modules that you would like to import into your application
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
+
+app.import('bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js');
+app.import('bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css');
+
+var bootstrapColorPickerImages = new Funnel('bower_components/mjolnic-bootstrap-colorpicker/dist/img/bootstrap-colorpicker', {
+  srcDir: '/',
+  include: ['*'],
+  destDir: '/img/bootstrap-colorpicker'
+});
 
 module.exports = app.toTree();
